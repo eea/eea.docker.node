@@ -1,4 +1,4 @@
-FROM node:slim
+FROM node:4.2.2-slim
 
 RUN apt-get update -q && \
     apt-get install python3-pip -y && \
