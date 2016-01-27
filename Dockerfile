@@ -7,3 +7,4 @@ RUN apt-get update -q && \
 COPY chaperone.conf /etc/chaperone.d/chaperone.conf
 RUN useradd -m node && usermod -u 600 node
 ENTRYPOINT ["/usr/local/bin/chaperone"]
+CMD ["runserver"]
