@@ -1,7 +1,22 @@
-## Docker Node
+## Nodejs Docker Image
 
-There are 3 docker images that have nodejs apps all based on node:4.2.2, these docker images are similar (eea.docker.node can be used for eea.docker.aide, eea.docker.pam and eea.docker.eeasearch). 
-We combine all 3 docker images into one base image that have the same content. 
+Generic Node Docker image with Chaperone
+The image is based on the [official node image](https://hub.docker.com/_/node/), and extends it with chaperone.
 
-This image contains the official Node 4.2+ image. 
-It introduces process management from Chaperone. It includes an user (named node) with ID < 1000.
+## Base docker image
+ - [hub.docker.com](https://hub.docker.com/r/eeacms/node/)
+
+## Source code
+  - [github.com](https://github.com/eea/eea.docker.node)
+
+## Usage
+The usage is similar with the official node image, with some minor changes:
+
+1. Dockerfile
+<code>FROM eeacms/node</code>
+2. ENTRYPOINT
+It's not needed because eeacms/node has a default entrypoint what will start /code/app.js with chaperone. This can be overwritten in the applications Dockerfile
+A specific ENTRYPOINT what takes advantage of chaperone should look like:
+<code>ENTRYPOINT ["/usr/local/bin/chaperone", "/path_to_application/my_app.js"]</code>
+3. CMD
+eeacms/node defines a default CMD: "runserver", so by default it's not needed to be specified in the Dockerfile
