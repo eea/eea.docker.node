@@ -1,6 +1,7 @@
 ## Nodejs Docker Image
 
-Generic Node Docker image with Chaperone
+Generic Node Docker image with Chaperone.
+
 The image is based on the [official node image](https://hub.docker.com/_/node/), and extends it with chaperone.
 
 ## Base docker image
